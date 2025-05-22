@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+    <div class="w-full min-h-screen bg-zinc-900 p-10 text-white">
+        <a href="/" class="text-blue-500 inline-block mb-5">Go Back to Home</a>
+        <h1 class="text-3xl tracking-tighter mb-3">All Users</h1>
+        <div class="tasks flex gap-3 flex-wrap">
+            <% getUser.forEach(function(users){%>
+                <div class="task w-72 p-4 rounded-lg bg-zinc-800">
+                    <div class="w-full h-52 rounded-lg bg-red-500 overflow-hidden">
+                        <img class="w-full h-full object-cover " src="<%= users.imageUrl %>" alt="">
+                    </div>
+                    <h3 class="text-3xl tracking-tighter"><%= users.name %></h3>
+                    <h5 class="text-zinc-500"><%= users.email %></h5>
+                        <div class="flex justify-between mt-3 items-center">
+                            <a class="text-blue-400" href="/edit/<%= users._id%>">Edit User</a>
+                            <a class="text-red-500" href="/delete/<%= users._id%>">Delete</a>
+                        </div>
+                </div>
+           <% })%>
+            
+        </div>
+    </div>    
+    <script src="/javascripts/script.js"></script>
+</body>
+</html>
